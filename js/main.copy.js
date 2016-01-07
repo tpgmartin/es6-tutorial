@@ -1,15 +1,14 @@
-import * as mortgage from './mortgage';
+import Mortgage from './mortgage2';
 
 document.getElementById('calcBtn').addEventListener('click', () => {
   let principal = document.getElementById("principal").value;
   let years = document.getElementById("years").value;
   let rate = document.getElementById("rate").value;
-  let {monthlyPayment, monthlyRate, amortization} = mortgage.calculateAmortization(principal, years, rate);
-  document.getElementById("monthlyPayment").innerHTML = monthlyPayment.toFixed(2);
-  document.getElementById("monthlyRate").innerHTML = (monthlyRate * 100).toFixed(2);
-  amortization.forEach(month => console.log(month));
+  let mortgage = new Mortgage(principal, years, rate);
+  document.getElementById("monthlyPayment").innerHTML = mortgage.monthlyPayment.toFixed(2);
+  document.getElementById("monthlyRate").innerHTML = (rate / 12).toFixed(2);
   let html = "";
-  amortization.forEach((year, index) => html += `
+  mortgage.amortization.forEach((year, index) => html += `
     <tr>
       <td>${index + 1}</td>
       <td class="currency">${Math.round(year.principalY)}</td >
