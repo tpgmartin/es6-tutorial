@@ -38,7 +38,7 @@ document.getElementById('calcBtn').addEventListener('click', () => {
   amortization.forEach((year, index) => html += `
     <tr>
       <td>${index + 1}</td>
-      <td class="currency">${Math.round(year.principalY)}</td>
+      <td class="currency">${Math.round(year.principalY)}</td >
       <td class="stretch">
         <div class="flex">
           <div class="bar principal" style="flex:${year.principalY};-webkit-flex:${year.principalY}"></div>
